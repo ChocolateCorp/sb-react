@@ -13,6 +13,7 @@ class AddEmployee extends React.Component {
         image: form.image.value   
       }
       this.props.addEmployee(newItem);
+      this.props.onAdd();
       form.reset();
     }
     addImage(e) {

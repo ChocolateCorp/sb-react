@@ -25,7 +25,7 @@ class Layout extends React.Component {
         return <div>
             <Nav />
             <div class="container">
-                {React.cloneElement(this.props.children, {employees: this.state.employees, addEmployee: this.add.bind(this), showAddBox: this.state.showAdd, toggleShowAdd: this.toggleShowAdd.bind(this) })}
+                {this.props.children}
             </div>
             <Footer />
         </div>
@@ -33,3 +33,5 @@ class Layout extends React.Component {
 }
 
 export default Layout;
+
+// {React.cloneElement(this.props.children, {employees: this.state.employees, addEmployee: this.add.bind(this), showAddBox: this.state.showAdd, toggleShowAdd: this.toggleShowAdd.bind(this) })} 

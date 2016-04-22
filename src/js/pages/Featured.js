@@ -1,20 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addEmployee } from '../actions/index';
+import { bindActionCreators } from 'redux';
+
 import AddEmployee from '../components/AddEmployee';
 import Employee from '../components/EmployeeCard';
 
 class Featured extends React.Component {
-
+    constructor() {
+        super();
+        this.state = {
+            showAddBox: false
+        }
+    }
     showHideAdd() {
-        this.props.toggleShowAdd();
+        this.setState({ showAddBox: !this.state.showAddBox });
     }
     render() {
         let addButton = {
-            className: (this.props.showAddBox) ? "btn btn-primary btn-block" : "btn btn-success btn-block",
-            text: (this.props.showAddBox) ? "Cancel" : "Add New Item"
+            className: (this.state.showAddBox) ? "btn btn-primary btn-block" : "btn btn-success btn-block",
+            text: (this.state.showAddBox) ? "Cancel" : "Add New Item"
         }
         let employees = this.props.employees.map((employee) => <Employee key={employee.id} employee={employee} />);
         return <div>
-            <AddEmployee show={this.props.showAddBox} addEmployee={this.props.addEmployee} />
+            <AddEmployee show={this.state.showAddBox} addEmployee={this.props.add} onAdd={this.showHideAdd.bind(this)} />
             <br />
             <button className={addButton.className} onClick={() => this.showHideAdd()}>{addButton.text}</button>
             <div class="row">{employees}</div>
@@ -22,4 +31,12 @@ class Featured extends React.Component {
     }
 }
 
-export default Featured;
+function mapStateToProps(state) {
+    return {
+        employees: state.employees
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ add: addEmployee }, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Featured);
