@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addEmployee } from '../actions/index';
+import { addEmployee, getAllData } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 import AddEmployee from '../components/AddEmployee';
@@ -11,6 +11,11 @@ class Featured extends React.Component {
         super();
         this.state = {
             showAddBox: false
+        }
+    }
+    componentWillMount() {
+        if(!this.props.employees.length) {
+            this.props.populate();   
         }
     }
     showHideAdd() {
@@ -37,6 +42,6 @@ function mapStateToProps(state) {
     }
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ add: addEmployee }, dispatch);
+    return bindActionCreators({ add: addEmployee, populate: getAllData }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Featured);
