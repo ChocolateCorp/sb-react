@@ -11,6 +11,7 @@ import About from './pages/About';
 import Employees from './pages/Employees';
 import EmployeeProfile from './pages/EmployeeProfile';
 import Contact from './pages/Contact';
+import ChatBot from './pages/ChatBot';
 
 import reducers from './reducers';
 
@@ -24,10 +25,11 @@ ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={Layout}>
             <IndexRoute component={Featured}></IndexRoute>
-            <Route path="about" component={About}></Route>
+            <Route path="login" component={About}></Route>
             <Route path="employees" component={Employees}></Route>
             <Route name="employee" path="employee/:id" component={EmployeeProfile}></Route>            
             <Route path="contact" component={Contact}></Route>
+            <Route path="darbot" component={ChatBot}></Route>
         </Route>
     </Router>
  </Provider>

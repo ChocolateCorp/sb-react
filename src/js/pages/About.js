@@ -1,11 +1,29 @@
 import React from 'react';
+import {Button} from 'reactstrap';
+import {Link} from 'react-router';
 
 class About extends React.Component {
+
+    constructor() {
+        super();
+
+
+        this.submit = this.submit.bind(this)
+      }
+
+
+    submit(){
+        console.log("hii login here")
+        
+    }
+
     render() {
         console.log(this.props);
         return <div>
-            <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab numquam qui accusantium, aspernatur laboriosam beatae quidem porro exercitationem sapiente nemo rem, cupiditate corporis vero maiores rerum, officiis voluptas? A, dignissimos.</p>
+            <h1>Login</h1>
+            <Link to="/darbot">
+                <Button color="success" onClick={this.submit}>Login</Button>
+            </Link>
         </div>
     }
 }

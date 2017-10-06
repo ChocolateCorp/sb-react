@@ -7,7 +7,7 @@ class Footer extends React.Component {
                 <div class="row">
                     <div class="col-xs-12">
                         <p class="text-muted text-center">
-                            <small>&copy; Copyright 2016</small>
+                            <small>&copy; Copyright 2017</small>
                         </p>
                     </div>
                 </div>
